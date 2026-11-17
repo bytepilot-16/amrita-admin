@@ -60,17 +60,17 @@ export const GlareCard: React.FC<GlareCardProps> = ({
           stiffness: 350,
           damping: 25,
         }}
-        className={`relative overflow-hidden rounded-xl border border-[#E2DCD0] bg-[#F4F0EA] transition-shadow duration-300 hover:shadow-paper-lg ${className}`}
+        className={`relative overflow-hidden rounded-xl border border-tuscan-hairline bg-surface/50 transition-shadow duration-300 hover:shadow-paper ${className}`}
         style={{
           transformStyle: 'preserve-3d',
         }}
       >
-        {/* Specular warm gold/ivory glare overlay */}
+        {/* Specular warm terracotta glare overlay */}
         <div
           className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-300"
           style={{
             opacity: glarePos.opacity,
-            background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(200, 138, 46, 0.12) 0%, rgba(255, 255, 255, 0.18) 30%, transparent 70%)`,
+            background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(227, 83, 54, 0.08) 0%, rgba(255, 211, 172, 0.15) 35%, transparent 70%)`,
           }}
         />
         {children}

@@ -82,17 +82,17 @@ export const CampusBlueprint: React.FC<CampusBlueprintProps> = ({ onAskChat }) =
   return (
     <div className="space-y-6">
       {/* Blueprint Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E2DCD0] pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-tuscan-hairline pb-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-md bg-amrita-crimson text-white">
+            <span className="flex h-6 w-6 items-center justify-center rounded-md bg-tuscan-rust text-white">
               <Navigation className="h-3.5 w-3.5" />
             </span>
-            <h2 className="font-serif text-xl font-bold tracking-tight text-[#141413]">
+            <h2 className="font-heading text-xl font-semibold tracking-[-0.02em] text-ink-charcoal">
               2.5D Vengal Campus Blueprint
             </h2>
           </div>
-          <p className="mt-0.5 text-xs text-[#57534E]">
+          <p className="mt-0.5 text-xs text-ink-slate">
             Architectural schematic of Amrita Vishwa Vidyapeetham, Chennai Campus (Vengal, Tiruvallur)
           </p>
         </div>
@@ -101,9 +101,9 @@ export const CampusBlueprint: React.FC<CampusBlueprintProps> = ({ onAskChat }) =
         <button
           type="button"
           onClick={() => setShowBusModal(!showBusModal)}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-[#E2DCD0] bg-white px-3 py-1 text-xs font-semibold text-[#141413] shadow-paper-sm hover:border-amrita-crimson transition-all self-start sm:self-auto"
+          className="inline-flex items-center gap-1.5 rounded-lg border border-tuscan-hairline bg-surface px-3 py-1 text-xs font-semibold text-ink-charcoal shadow-sm hover:border-tuscan-rust transition-all self-start sm:self-auto"
         >
-          <Bus className="h-3.5 w-3.5 text-amrita-crimson" />
+          <Bus className="h-3.5 w-3.5 text-tuscan-rust" />
           <span>{showBusModal ? 'Close Transit Routes' : '20+ College Bus Routes'}</span>
         </button>
       </div>
@@ -118,10 +118,10 @@ export const CampusBlueprint: React.FC<CampusBlueprintProps> = ({ onAskChat }) =
             className="overflow-hidden rounded-xl border border-amrita-border bg-amrita-light/30 p-4 shadow-paper-sm"
           >
             <div className="flex items-center justify-between mb-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-amrita-crimson">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-tuscan-rust">
                 Campus Daily Bus Routes (Morning Commute)
               </h4>
-              <span className="text-[11px] font-mono text-[#57534E]">
+              <span className="text-xs font-mono text-ink-slate">
                 Nearest Suburban Trains: Avadi & Tiruvallur
               </span>
             </div>
@@ -129,13 +129,13 @@ export const CampusBlueprint: React.FC<CampusBlueprintProps> = ({ onAskChat }) =
               {BUS_ROUTES.map((route) => (
                 <div
                   key={route.id}
-                  className="rounded-lg border border-[#E2DCD0] bg-white p-2.5 shadow-xs"
+                  className="rounded-lg border border-tuscan-hairline bg-surface p-2.5 shadow-sm"
                 >
-                  <div className="flex items-center justify-between font-mono font-bold text-amrita-crimson text-[11px] mb-1">
+                  <div className="flex items-center justify-between font-mono font-bold text-tuscan-rust text-xs mb-1">
                     <span>{route.id} — Dept: {route.time}</span>
-                    <span className="text-[#8C857B]">{route.distance}</span>
+                    <span className="text-ink-muted">{route.distance}</span>
                   </div>
-                  <p className="text-[11px] text-[#57534E] leading-relaxed">
+                  <p className="text-xs text-ink-slate leading-relaxed">
                     {route.route}
                   </p>
                 </div>
@@ -159,8 +159,8 @@ export const CampusBlueprint: React.FC<CampusBlueprintProps> = ({ onAskChat }) =
             onClick={() => setActiveCategory(tab.id)}
             className={`whitespace-nowrap px-3 py-1 rounded-full border transition-all ${
               activeCategory === tab.id
-                ? 'bg-amrita-crimson border-amrita-crimson text-white font-semibold shadow-paper-sm'
-                : 'border-[#E2DCD0] bg-white text-[#57534E] hover:bg-[#F4F0EA]'
+                ? 'bg-tuscan-rust border-tuscan-rust text-white font-semibold shadow-sm'
+                : 'border-tuscan-hairline bg-surface text-ink-slate hover:bg-surface/80'
             }`}
           >
             {tab.label}
@@ -169,12 +169,9 @@ export const CampusBlueprint: React.FC<CampusBlueprintProps> = ({ onAskChat }) =
       </div>
 
       {/* 2.5D Architectural Canvas / SVG Interactive Map */}
-      <div className="relative rounded-2xl border border-[#E2DCD0] bg-[#FAF7F0] p-4 shadow-paper overflow-hidden">
-        {/* Subtle grid background */}
-        <div className="absolute inset-0 architectural-grid opacity-70 pointer-events-none" />
-
+      <div className="relative rounded-2xl border border-tuscan-hairline bg-surface p-4 shadow-paper overflow-hidden">
         {/* Isometric schematic vector layout */}
-        <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-xl overflow-hidden border border-[#E6E1D6] bg-[#F7F3EB]">
+        <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-xl overflow-hidden border border-tuscan-hairline bg-parchment">
           <svg
             className="w-full h-full"
             viewBox="0 0 1000 600"
@@ -273,7 +270,7 @@ export const CampusBlueprint: React.FC<CampusBlueprintProps> = ({ onAskChat }) =
                     fontFamily="JetBrains Mono"
                     fontSize="10"
                     fontWeight="600"
-                    fill={isSelected ? '#A4123F' : '#57534E'}
+                    fill={isSelected ? '#8A2B0E' : '#524741'}
                   >
                     {node.code}
                   </text>
@@ -301,10 +298,10 @@ export const CampusBlueprint: React.FC<CampusBlueprintProps> = ({ onAskChat }) =
               >
                 {/* Pin Header Tooltip on hover/active */}
                 <span
-                  className={`pointer-events-none mb-1 whitespace-nowrap rounded-md px-2 py-0.5 text-[10px] font-bold shadow-paper-sm transition-all ${
+                  className={`pointer-events-none mb-1 whitespace-nowrap rounded-md px-2 py-0.5 text-xs font-bold shadow-sm transition-all ${
                     isSelected
-                      ? 'bg-amrita-crimson text-white scale-100 opacity-100'
-                      : 'bg-white text-[#141413] border border-[#E2DCD0] opacity-80 group-hover:opacity-100'
+                      ? 'bg-tuscan-rust text-white scale-100 opacity-100'
+                      : 'bg-surface text-ink-charcoal border border-tuscan-hairline opacity-80 group-hover:opacity-100'
                   }`}
                 >
                   {node.name}
@@ -313,13 +310,13 @@ export const CampusBlueprint: React.FC<CampusBlueprintProps> = ({ onAskChat }) =
                 {/* Animated Glowing Pin Point */}
                 <div className="relative">
                   {isSelected && (
-                    <span className="absolute -inset-1.5 animate-ping rounded-full bg-amrita-crimson/30" />
+                    <span className="absolute -inset-1.5 animate-ping rounded-full bg-tuscan-rust/30" />
                   )}
                   <div
                     className={`flex h-8 w-8 items-center justify-center rounded-full shadow-paper transition-all ${
                       isSelected
-                        ? 'bg-amrita-crimson text-white ring-4 ring-amrita-crimson/20'
-                        : 'bg-white text-amrita-crimson border border-[#E2DCD0] group-hover:bg-[#FBEBED]'
+                        ? 'bg-tuscan-rust text-white ring-4 ring-tuscan-rust/20'
+                        : 'bg-surface text-tuscan-rust border border-tuscan-hairline group-hover:bg-surface/80'
                     }`}
                   >
                     {getCategoryIcon(node.category)}
@@ -331,22 +328,22 @@ export const CampusBlueprint: React.FC<CampusBlueprintProps> = ({ onAskChat }) =
         </div>
 
         {/* Blueprint legend */}
-        <div className="flex flex-wrap items-center justify-between gap-2 pt-3 text-[11px] text-[#8C857B]">
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-3 text-xs text-ink-muted">
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full bg-amrita-crimson" />
+              <span className="h-2 w-2 rounded-full bg-tuscan-rust" />
               Selected Node
             </span>
             <span className="flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full bg-[#D5CDC0]" />
+              <span className="h-2 w-2 rounded-full bg-tuscan-hairline" />
               Campus Arterial Road
             </span>
             <span className="flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full bg-[#C5D3B8]" />
+              <span className="h-2 w-2 rounded-full bg-emerald-amrita" />
               Eco Landscaping
             </span>
           </div>
-          <span className="font-mono text-[10px]">Tap any pin for detailed specifications</span>
+          <span className="font-mono text-xs">Tap any pin for detailed specifications</span>
         </div>
       </div>
 
@@ -358,61 +355,61 @@ export const CampusBlueprint: React.FC<CampusBlueprintProps> = ({ onAskChat }) =
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.25 }}
-          className="rounded-xl border border-[#E2DCD0] bg-white p-5 shadow-paper-sm"
+          className="rounded-xl border border-tuscan-hairline bg-surface p-5 shadow-sm"
         >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E2DCD0] pb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-tuscan-hairline pb-4">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <span className={`px-2 py-0.5 rounded text-[10px] font-bold border uppercase tracking-wider ${getCategoryBadgeClass(selectedNode.category)}`}>
+                <span className={`px-2 py-0.5 rounded text-xs font-bold border uppercase tracking-wider ${getCategoryBadgeClass(selectedNode.category)}`}>
                   {selectedNode.category}
                 </span>
-                <span className="font-mono text-xs text-[#8C857B]">
+                <span className="font-mono text-xs text-ink-muted">
                   ID: {selectedNode.code}
                 </span>
               </div>
-              <h3 className="font-serif text-xl font-bold text-[#141413]">
+              <h3 className="font-heading text-xl font-semibold tracking-[-0.02em] text-ink-charcoal">
                 {selectedNode.name}
               </h3>
             </div>
 
             <div className="flex items-center gap-3 self-start sm:self-auto font-mono text-xs">
-              <div className="rounded-lg border border-[#E2DCD0] bg-[#FBF9F5] px-3 py-1.5">
-                <div className="flex items-center gap-1 text-[#8C857B] text-[10px]">
+              <div className="rounded-lg border border-tuscan-hairline bg-parchment px-3 py-1.5">
+                <div className="flex items-center gap-1 text-ink-muted text-xs">
                   <Navigation className="h-3 w-3" />
                   <span>From Main Gate</span>
                 </div>
-                <div className="font-bold text-[#141413] mt-0.5">
+                <div className="font-bold text-ink-charcoal mt-0.5">
                   {selectedNode.walkTimeFromGate}
                 </div>
               </div>
 
-              <div className="rounded-lg border border-[#E2DCD0] bg-[#FBF9F5] px-3 py-1.5">
-                <div className="flex items-center gap-1 text-[#8C857B] text-[10px]">
+              <div className="rounded-lg border border-tuscan-hairline bg-parchment px-3 py-1.5">
+                <div className="flex items-center gap-1 text-ink-muted text-xs">
                   <Clock className="h-3 w-3" />
                   <span>Access Window</span>
                 </div>
-                <div className="font-bold text-[#141413] mt-0.5">
+                <div className="font-bold text-ink-charcoal mt-0.5">
                   {selectedNode.timings}
                 </div>
               </div>
             </div>
           </div>
 
-          <p className="mt-3 text-xs leading-relaxed text-[#57534E]">
+          <p className="mt-3 text-xs leading-relaxed text-ink-slate">
             {selectedNode.description}
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 pt-3 border-t border-[#E2DCD0]/60">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 pt-3 border-t border-tuscan-hairline/60">
             {/* Rules & Protocols */}
             <div>
-              <h5 className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-[#141413] mb-2">
-                <Shield className="h-3.5 w-3.5 text-amrita-crimson" />
+              <h5 className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-ink-charcoal mb-2 font-heading">
+                <Shield className="h-3.5 w-3.5 text-tuscan-rust" />
                 <span>Operating Rules & Protocols</span>
               </h5>
-              <ul className="space-y-1.5 text-xs text-[#57534E]">
+              <ul className="space-y-1.5 text-xs text-ink-slate">
                 {selectedNode.rules.map((rule, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-amrita-crimson shrink-0 mt-1.5" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-tuscan-rust shrink-0 mt-1.5" />
                     <span>{rule}</span>
                   </li>
                 ))}
@@ -421,14 +418,14 @@ export const CampusBlueprint: React.FC<CampusBlueprintProps> = ({ onAskChat }) =
 
             {/* Key Facilities */}
             <div>
-              <h5 className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-[#141413] mb-2">
-                <Sparkles className="h-3.5 w-3.5 text-amrita-gold" />
+              <h5 className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-ink-charcoal mb-2 font-heading">
+                <Sparkles className="h-3.5 w-3.5 text-tuscan-terracotta" />
                 <span>Key Infrastructure & Labs</span>
               </h5>
-              <ul className="space-y-1.5 text-xs text-[#57534E]">
+              <ul className="space-y-1.5 text-xs text-ink-slate">
                 {selectedNode.facilities.map((fac, idx) => (
                   <li key={idx} className="flex items-start gap-1.5">
-                    <Check className="h-3 w-3 text-amrita-gold shrink-0 mt-0.5" />
+                    <Check className="h-3 w-3 text-tuscan-rust shrink-0 mt-0.5" />
                     <span>{fac}</span>
                   </li>
                 ))}
@@ -437,13 +434,13 @@ export const CampusBlueprint: React.FC<CampusBlueprintProps> = ({ onAskChat }) =
           </div>
 
           {/* Action to ask chatbot */}
-          <div className="mt-4 pt-3 border-t border-[#E2DCD0] flex justify-end">
+          <div className="mt-4 pt-3 border-t border-tuscan-hairline flex justify-end">
             <button
               type="button"
               onClick={() => onAskChat(selectedNode.relatedQuery)}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-amrita-crimson px-3.5 py-1.5 text-xs font-semibold text-white shadow-paper-sm hover:bg-amrita-dark transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-tuscan-rust px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-tuscan-rust/90 transition-colors"
             >
-              <span>Ask AI Chatbot about this Building</span>
+              <span>Ask Admissions Guide about this Building</span>
               <ArrowRight className="h-3.5 w-3.5" />
             </button>
           </div>

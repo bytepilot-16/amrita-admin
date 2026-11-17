@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { Send, ArrowRight, RefreshCw } from 'lucide-react';
 import { ChatMessageItem, ChatMessage } from './ChatMessageItem';
 import { soundFx } from '../../lib/soundFx';
@@ -48,26 +47,26 @@ export const ChatTerminal: React.FC<ChatTerminalProps> = ({
   ];
 
   return (
-    <div className="w-full max-w-3xl mx-auto py-6 px-4 sm:px-6">
+    <div className="w-full max-w-4xl mx-auto py-10 px-4 sm:px-8">
       {/* Messages Stream */}
-      <div className="space-y-4 min-h-[500px]">
+      <div className="space-y-6 min-h-[520px]">
         {/* Welcome Empty State Banner */}
         {messages.length <= 1 && (
-          <div className="mb-10 text-center sm:text-left">
-            <div className="mb-3">
-              <span className="font-mono text-xs uppercase tracking-wider text-[#8C857B]">
+          <div className="mb-12">
+            <div className="mb-8 border-b border-tuscan-hairline pb-8">
+              <span className="font-mono text-xs uppercase tracking-wider text-ink-muted block mb-2">
                 Amrita Vishwa Vidyapeetham • Chennai Campus (Vengal)
               </span>
-              <h1 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#141413] mt-1">
+              <h1 className="font-heading text-3xl sm:text-4xl font-semibold tracking-[-0.02em] text-ink-charcoal">
                 Admissions & Campus Guide
               </h1>
-              <p className="mt-2 text-sm text-[#57534E] leading-relaxed max-w-2xl">
+              <p className="mt-3 text-base text-ink-slate leading-[1.65] max-w-2xl">
                 Ask anything about B.Tech fee slabs, AEEE rank cutoffs, hostel rules, or daily mess food at the Vengal campus. Select a common question below or type your own.
               </p>
             </div>
 
-            {/* 6 Clean Question Cards (No pastel icon boxes, no sparkles, clean 01-06 numbering) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-6">
+            {/* 6 Clean Question Cards (Editorial numbering, no icon boxes, subtle hairline borders) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               {QUESTION_STARTERS.map((starter) => (
                 <button
                   key={starter.num}
@@ -76,17 +75,17 @@ export const ChatTerminal: React.FC<ChatTerminalProps> = ({
                     soundFx.click();
                     onSendMessage(starter.text);
                   }}
-                  className="group flex items-start gap-3 rounded-xl border border-[#E2DCD0] bg-white p-3.5 text-left transition-all hover:border-[#141413] hover:shadow-paper-sm"
+                  className="group flex items-start gap-3.5 rounded-xl border border-tuscan-hairline bg-surface/50 p-4 text-left transition-all hover:border-tuscan-terracotta hover:bg-surface"
                 >
-                  <span className="font-mono text-xs font-semibold text-[#8C857B] group-hover:text-[#9E1B34] transition-colors mt-0.5">
+                  <span className="font-mono text-xs font-semibold text-tuscan-rust group-hover:text-tuscan-terracotta transition-colors mt-0.5">
                     {starter.num}
                   </span>
                   <div className="flex-1">
-                    <span className="text-xs font-medium text-[#141413] group-hover:text-[#9E1B34] transition-colors leading-snug block">
+                    <span className="text-sm font-medium text-ink-charcoal group-hover:text-tuscan-rust transition-colors leading-relaxed block">
                       {starter.text}
                     </span>
                   </div>
-                  <ArrowRight className="h-3.5 w-3.5 text-[#8C857B] group-hover:text-[#141413] transition-colors shrink-0 mt-0.5" />
+                  <ArrowRight className="h-4 w-4 text-ink-muted group-hover:text-tuscan-rust transition-colors shrink-0 mt-0.5" />
                 </button>
               ))}
             </div>
@@ -105,35 +104,35 @@ export const ChatTerminal: React.FC<ChatTerminalProps> = ({
 
         {/* Loading Indicator */}
         {isLoading && (
-          <div className="flex items-center gap-2.5 p-4 my-2 text-xs text-[#57534E]">
-            <RefreshCw className="h-3.5 w-3.5 animate-spin text-[#9E1B34]" />
-            <span>Looking up campus records and cutoff rules...</span>
+          <div className="flex items-center gap-3 py-4 text-sm text-ink-slate font-medium">
+            <RefreshCw className="h-4 w-4 animate-spin text-tuscan-rust" />
+            <span>Consulting campus records and cutoff matrices...</span>
           </div>
         )}
 
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Floating Centered Input Bar */}
-      <div className="sticky bottom-6 mt-8 z-30">
+      {/* Centered Input Bar */}
+      <div className="sticky bottom-6 mt-10 z-30">
         <form
           onSubmit={handleSubmit}
-          className="relative flex items-center rounded-2xl border border-[#E2DCD0] bg-white/95 p-1.5 shadow-paper backdrop-blur-md"
+          className="relative flex items-center rounded-2xl border border-tuscan-hairline bg-parchment/95 p-2 shadow-paper backdrop-blur-md transition-all focus-within:border-tuscan-rust"
         >
           <input
             type="text"
             value={inputQuery}
             onChange={(e) => setInputQuery(e.target.value)}
             placeholder="Ask about AEEE rank cutoffs, CSE fee slabs, hostel rules, or mess food..."
-            className="w-full bg-transparent py-2.5 pl-4 pr-24 text-sm text-[#141413] placeholder:text-[#8C857B] focus:outline-none"
+            className="w-full bg-transparent py-2.5 pl-4 pr-24 text-base text-ink-charcoal placeholder:text-ink-muted focus:outline-none"
           />
           <button
             type="submit"
             disabled={!inputQuery.trim() || isLoading}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-[#9E1B34] px-4 py-2 text-xs font-semibold text-white hover:bg-[#7D1529] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-tuscan-rust px-5 py-2.5 text-sm font-semibold text-white hover:bg-tuscan-rust/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors shrink-0"
           >
             <span>Ask</span>
-            <Send className="h-3 w-3" />
+            <Send className="h-3.5 w-3.5" />
           </button>
         </form>
       </div>

@@ -17,20 +17,20 @@ export const MarkdownContent: React.FC<MarkdownContentProps> = ({ content }) => 
     const flushTable = (key: number) => {
       if (tableHeader.length > 0) {
         elements.push(
-          <div key={`table-${key}`} className="my-3 overflow-x-auto rounded-xl border border-[#E2DCD0] bg-white">
-            <table className="w-full text-left text-xs">
-              <thead className="border-b border-[#E2DCD0] bg-[#FAF8F5] font-mono text-[11px] text-[#141413]">
+          <div key={`table-${key}`} className="my-4 overflow-x-auto rounded-xl border border-tuscan-hairline bg-surface/40">
+            <table className="w-full text-left text-sm">
+              <thead className="border-b border-tuscan-hairline bg-surface font-mono text-xs text-ink-charcoal">
                 <tr>
                   {tableHeader.map((th, i) => (
-                    <th key={i} className="px-3 py-2 font-semibold">{th.trim()}</th>
+                    <th key={i} className="px-3.5 py-2.5 font-semibold">{th.trim()}</th>
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#EAE4D9]">
+              <tbody className="divide-y divide-tuscan-hairline/60">
                 {tableRows.map((row, rIdx) => (
-                  <tr key={rIdx} className="hover:bg-[#FAF8F5] transition-colors">
+                  <tr key={rIdx} className="hover:bg-surface transition-colors">
                     {row.map((cell, cIdx) => (
-                      <td key={cIdx} className="px-3 py-2 font-mono text-xs text-[#57534E]">
+                      <td key={cIdx} className="px-3.5 py-2.5 font-mono text-xs text-ink-slate">
                         {cell.trim()}
                       </td>
                     ))}
@@ -51,7 +51,7 @@ export const MarkdownContent: React.FC<MarkdownContentProps> = ({ content }) => 
         elements.push(
           <pre
             key={`code-${key}`}
-            className="my-3 overflow-x-auto rounded-xl bg-[#FAF8F5] p-3 font-mono text-xs leading-relaxed text-[#141413] border border-[#E2DCD0]"
+            className="my-3.5 overflow-x-auto rounded-xl bg-surface p-4 font-mono text-xs leading-relaxed text-ink-charcoal border border-tuscan-hairline"
           >
             <code>{codeBlockContent.join('\n')}</code>
           </pre>
@@ -99,7 +99,7 @@ export const MarkdownContent: React.FC<MarkdownContentProps> = ({ content }) => 
       // Headings
       if (line.startsWith('### ')) {
         elements.push(
-          <h3 key={idx} className="font-serif text-lg font-bold text-[#141413] mt-4 mb-2">
+          <h3 key={idx} className="font-heading text-lg font-semibold tracking-[-0.02em] text-ink-charcoal mt-5 mb-2">
             {formatInline(line.replace('### ', ''))}
           </h3>
         );
@@ -108,7 +108,7 @@ export const MarkdownContent: React.FC<MarkdownContentProps> = ({ content }) => 
 
       if (line.startsWith('#### ')) {
         elements.push(
-          <h4 key={idx} className="text-xs font-semibold uppercase tracking-wider text-[#9E1B34] mt-3 mb-1.5">
+          <h4 key={idx} className="font-heading text-xs font-semibold uppercase tracking-wider text-tuscan-rust mt-4 mb-1.5">
             {formatInline(line.replace('#### ', ''))}
           </h4>
         );
@@ -117,7 +117,7 @@ export const MarkdownContent: React.FC<MarkdownContentProps> = ({ content }) => 
 
       // Horizontal separator
       if (line.trim() === '---') {
-        elements.push(<hr key={idx} className="my-3 border-t border-[#E2DCD0]" />);
+        elements.push(<hr key={idx} className="my-4 border-t border-tuscan-hairline" />);
         return;
       }
 
@@ -126,7 +126,7 @@ export const MarkdownContent: React.FC<MarkdownContentProps> = ({ content }) => 
         elements.push(
           <blockquote
             key={idx}
-            className="my-2 border-l-2 border-[#9E1B34] bg-[#FAF8F5] px-3.5 py-2 text-xs text-[#57534E] rounded-r-lg"
+            className="my-3 border-l-2 border-tuscan-rust bg-surface/60 px-4 py-2.5 text-sm text-ink-slate rounded-r-lg leading-[1.65]"
           >
             {formatInline(line.replace('> ', ''))}
           </blockquote>
@@ -137,7 +137,7 @@ export const MarkdownContent: React.FC<MarkdownContentProps> = ({ content }) => 
       // Unordered list item
       if (line.startsWith('- ') || line.startsWith('* ')) {
         elements.push(
-          <li key={idx} className="ml-4 list-disc text-xs text-[#57534E] leading-relaxed my-0.5">
+          <li key={idx} className="ml-5 list-disc text-base text-ink-slate leading-[1.65] my-1">
             {formatInline(line.replace(/^[-*]\s+/, ''))}
           </li>
         );
@@ -147,7 +147,7 @@ export const MarkdownContent: React.FC<MarkdownContentProps> = ({ content }) => 
       // Numbered list item
       if (/^\d+\.\s/.test(line)) {
         elements.push(
-          <li key={idx} className="ml-4 list-decimal text-xs text-[#57534E] leading-relaxed my-0.5">
+          <li key={idx} className="ml-5 list-decimal text-base text-ink-slate leading-[1.65] my-1">
             {formatInline(line.replace(/^\d+\.\s+/, ''))}
           </li>
         );
@@ -161,7 +161,7 @@ export const MarkdownContent: React.FC<MarkdownContentProps> = ({ content }) => 
 
       // Normal paragraph
       elements.push(
-        <p key={idx} className="text-xs text-[#57534E] leading-relaxed my-1.5">
+        <p key={idx} className="text-base text-ink-slate leading-[1.65] my-2">
           {formatInline(line)}
         </p>
       );
@@ -185,7 +185,7 @@ export const MarkdownContent: React.FC<MarkdownContentProps> = ({ content }) => 
           <a
             key={index}
             href={linkMatch[2]}
-            className="text-[#9E1B34] font-semibold underline hover:text-[#7D1529] transition-colors"
+            className="text-tuscan-rust font-semibold underline hover:text-tuscan-terracotta transition-colors"
           >
             {linkMatch[1]}
           </a>
@@ -193,14 +193,14 @@ export const MarkdownContent: React.FC<MarkdownContentProps> = ({ content }) => 
       }
       if (part.startsWith('**') && part.endsWith('**')) {
         return (
-          <strong key={index} className="font-semibold text-[#141413]">
+          <strong key={index} className="font-semibold text-ink-charcoal">
             {part.slice(2, -2)}
           </strong>
         );
       }
       if (part.startsWith('*') && part.endsWith('*')) {
         return (
-          <em key={index} className="italic text-[#57534E]">
+          <em key={index} className="italic text-ink-slate">
             {part.slice(1, -1)}
           </em>
         );
@@ -209,7 +209,7 @@ export const MarkdownContent: React.FC<MarkdownContentProps> = ({ content }) => 
         return (
           <code
             key={index}
-            className="rounded bg-[#FAF8F5] border border-[#E2DCD0] px-1.5 py-0.5 font-mono text-[11px] text-[#9E1B34] font-medium"
+            className="rounded bg-surface border border-tuscan-hairline px-2 py-0.5 font-mono text-xs text-tuscan-rust font-medium"
           >
             {part.slice(1, -1)}
           </code>
@@ -219,5 +219,5 @@ export const MarkdownContent: React.FC<MarkdownContentProps> = ({ content }) => 
     });
   };
 
-  return <div className="space-y-1">{renderFormatted(content)}</div>;
+  return <div className="space-y-1.5">{renderFormatted(content)}</div>;
 };
